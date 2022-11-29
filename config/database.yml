@@ -1,0 +1,20 @@
+
+default: &default
+  adapter: postgresql
+  host: localhost
+  port: 5432
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: kevin
+  password: Calvas57
+
+development:
+  <<: *default
+  database: car_list_api_development
+
+test:
+  <<: *default
+  database: car_list_api_test
+
+production:
+  <<: *default
+  database: car_list_api_production
