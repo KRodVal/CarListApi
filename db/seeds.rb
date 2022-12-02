@@ -1,1 +1,1 @@
-user = User.create(username: "testuser", password: "test", age: 69)
+user = User.create(username: "cacaroto", password: "tumami", age: 18)

@@ -1,13 +1,18 @@
 class BrandsController < ApplicationController
     def index
         @brands = Brand.all
-        render json: @brands.to_json(include: :logo_attachment)
+        
+        render json: @brands.map { |brand|
+        if brand.logo.persisted?
+            brand.as_json.merge({logo: url_for(brand.logo) })
+        end}
+        
+
     end
 
     def show
         @brand = Brand.find(params[:id])
-        @brand.logo_attachment.record_type = url_for(@brand.logo)
-        render json: @brand.to_json(include: :logo_attachment)
+        render json: @brand.as_json.merge({logo: url_for(@brand.logo)})
     end
 
     def create
@@ -16,7 +21,14 @@ class BrandsController < ApplicationController
             country: params[:country],
             logo: params[:logo]
         )
-        render json: @brand
+        if @brand.persisted?
+            render json: @brand
+        else
+            render json: {status: {
+                message: 'Tu madre'
+            }}
+        end
+        
     end
 
     def update
