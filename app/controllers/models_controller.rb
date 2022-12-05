@@ -1,12 +1,16 @@
 class ModelsController < ApplicationController
     def index
         @models = Model.all
-        render json: @models.to_json(include: {brand: {include: {logo_attachment: {include: :blob}}}})
+        
+        render json: @models.map{|model| 
+            model.as_json(include: :brand).merge({logo: url_for(model.brand.logo)})
+        }
+        
     end
 
     def show
         @model = Model.find(params[:id])
-        render json: @model.to_json(include: {brand: {include: {logo_attachment: {include: :blob}}}})
+        render json: @model.as_json(include: :brand).merge({logo: url_for(@model.brand.logo)})
     end
 
     def create
