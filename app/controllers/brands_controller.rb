@@ -35,8 +35,7 @@ class BrandsController < ApplicationController
         @brand = Brand.find(params[:id])
         @brand.update(
             brand_name: params[:brand_name],
-            country: params[:country],
-            logo: params[:logo]
+            country: params[:country]
         )
         render json: @brand
     end
