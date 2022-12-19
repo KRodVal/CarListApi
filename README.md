@@ -1,24 +1,64 @@
-# README
+# Disclaimer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project was prepared in conjunction with a [React FrontEnd](https://github.com/KRodVal/ReactCarFrontEnd). 
+To access the directory where said backend is stored, please click [here](https://github.com/KRodVal/ReactCarFrontEnd).
 
-Things you may want to cover:
+Before starting the Instalation Guide, you must have installed [Ruby](https://nodejs.org/es/) and all of it's dependencies.
 
-* Ruby version
+## API Reference
 
-* System dependencies
+#### Brands
 
-* Configuration
+```http
+ GET  /brands
+```
 
-* Database creation
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `Token`   | `string` | **Required**. Your Token   |
 
-* Database initialization
+#### Brand
 
-* How to run the test suite
+```http
+  GET /brands/${id}
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of brand to fetch |
+| `Token`   | `string` | **Required**. Your Token          |
 
-* Deployment instructions
+#### Brands
 
-* ...
+```http
+ GET  /models
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `Token`   | `string` | **Required**. Your Token   |
+
+#### Brand
+
+```http
+  GET /models/${id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of model to fetch |
+| `Token`   | `string` | **Required**. Your Token          |
+
+## Diagrams
+
+### E-R
+
+![E-R](Screenshots/E-R.png)
+
+### Relational
+
+![Relational](Screenshots/Relational.png)
+
+### UML
+
+![UML](Screenshots/UML.png)
